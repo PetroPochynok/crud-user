@@ -6,9 +6,11 @@ import org.springbootproject.curduser.cruduser.exception.UserNotFoundException;
 import org.springbootproject.curduser.cruduser.mapper.UserMapper;
 import org.springbootproject.curduser.cruduser.service.UserService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/users")
@@ -31,10 +33,30 @@ public class UserController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.CREATED)
     public void saveUser(@RequestBody UserAndUserProfileDTO dto) {
         User user = UserMapper.INSTANCE.UserAndUserProfileDTOtoUser(dto);
         userService.saveUser(user);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<User> updateUser(@RequestBody UserAndUserProfileDTO dto, @PathVariable Long id) {
+        if (!Objects.equals(dto.getId(), id)) {
+            throw new IllegalArgumentException("Invalid user id");
+        }
+        User updatedUser = userService.updateUser(dto, id);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(updatedUser);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<User> deleteUser(@PathVariable Long id) {
+        User user = userService.getUser(id).orElseThrow(() -> new UserNotFoundException("there is no user by id " + id));
+        userService.deleteUser(user);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(user);
     }
 
 }

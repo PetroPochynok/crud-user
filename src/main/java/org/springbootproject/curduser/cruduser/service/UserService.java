@@ -1,5 +1,6 @@
 package org.springbootproject.curduser.cruduser.service;
 
+import org.springbootproject.curduser.cruduser.dto.UserAndUserProfileDTO;
 import org.springbootproject.curduser.cruduser.entity.User;
 
 import java.util.List;
@@ -13,4 +14,6 @@ public interface UserService {
     void deleteUser(User user);
 
     void saveUser(User user);
+
+    User updateUser(UserAndUserProfileDTO dto, Long id);
 }
