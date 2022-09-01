@@ -1,12 +1,12 @@
 package org.springbootproject.curduser.cruduser.controller;
 
+import org.springbootproject.curduser.cruduser.dto.UserAndUserProfileDTO;
 import org.springbootproject.curduser.cruduser.entity.User;
 import org.springbootproject.curduser.cruduser.exception.UserNotFoundException;
+import org.springbootproject.curduser.cruduser.mapper.UserMapper;
 import org.springbootproject.curduser.cruduser.service.UserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,7 +27,14 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User getUser(@PathVariable Long id) {
-        return userService.getUser(id).orElseThrow(() -> new UserNotFoundException("can't find user by id: " + id));
+        return userService.getUser(id).orElseThrow(() -> new UserNotFoundException("can't find user by id " + id));
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void saveUser(@RequestBody UserAndUserProfileDTO dto) {
+        User user = UserMapper.INSTANCE.UserAndUserProfileDTOtoUser(dto);
+        userService.saveUser(user);
     }
 
 }
