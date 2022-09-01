@@ -7,6 +7,7 @@ import org.springbootproject.curduser.cruduser.exception.UserNotFoundException;
 import org.springbootproject.curduser.cruduser.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +38,7 @@ public class UserServiceImpl implements UserService{
         userRepository.save(user);
     }
 
+    @Transactional
     @Override
     public User updateUser(UserAndUserProfileDTO dto, Long id) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("can't find user by id " + id));
@@ -45,10 +47,9 @@ public class UserServiceImpl implements UserService{
         user.setEmail(dto.getEmail());
         user.setMoney(dto.getMoney());
 
-        UserProfile userProfile = new UserProfile();
-        userProfile.setCountry(dto.getCountry());
-        userProfile.setCity(dto.getCity());
-        userProfile.setStreet(dto.getStreet());
+        user.getUserProfile().setCountry(dto.getCountry());
+        user.getUserProfile().setCity(dto.getCity());
+        user.getUserProfile().setStreet(dto.getStreet());
         return user;
     }
 }
