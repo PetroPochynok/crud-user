@@ -40,9 +40,12 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveUser(@RequestBody UserAndUserProfileDTO dto) {
+    public ResponseEntity<User> saveUser(@RequestBody UserAndUserProfileDTO dto) {
         User user = UserMapper.INSTANCE.UserAndUserProfileDTOtoUser(dto);
         userService.saveUser(user);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(user);
     }
 
     @PutMapping("/{id}")
