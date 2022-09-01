@@ -1,10 +1,10 @@
-package org.springbootproject.curduser.cruduser.controller;
+package org.springbootproject.cruduser.controller;
 
-import org.springbootproject.curduser.cruduser.dto.UserAndUserProfileDTO;
-import org.springbootproject.curduser.cruduser.entity.User;
-import org.springbootproject.curduser.cruduser.exception.UserNotFoundException;
-import org.springbootproject.curduser.cruduser.mapper.UserMapper;
-import org.springbootproject.curduser.cruduser.service.UserService;
+import org.springbootproject.cruduser.dto.UserAndUserProfileDTO;
+import org.springbootproject.cruduser.entity.User;
+import org.springbootproject.cruduser.exception.UserNotFoundException;
+import org.springbootproject.cruduser.mapper.UserMapper;
+import org.springbootproject.cruduser.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

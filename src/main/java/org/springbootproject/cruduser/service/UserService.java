@@ -1,7 +1,7 @@
-package org.springbootproject.curduser.cruduser.service;
+package org.springbootproject.cruduser.service;
 
-import org.springbootproject.curduser.cruduser.dto.UserAndUserProfileDTO;
-import org.springbootproject.curduser.cruduser.entity.User;
+import org.springbootproject.cruduser.dto.UserAndUserProfileDTO;
+import org.springbootproject.cruduser.entity.User;
 
 import java.util.List;
 import java.util.Optional;

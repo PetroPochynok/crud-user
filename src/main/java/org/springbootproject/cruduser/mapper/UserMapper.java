@@ -1,10 +1,10 @@
-package org.springbootproject.curduser.cruduser.mapper;
+package org.springbootproject.cruduser.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.springbootproject.curduser.cruduser.dto.UserAndUserProfileDTO;
-import org.springbootproject.curduser.cruduser.entity.User;
-import org.springbootproject.curduser.cruduser.entity.UserProfile;
+import org.springbootproject.cruduser.dto.UserAndUserProfileDTO;
+import org.springbootproject.cruduser.entity.User;
+import org.springbootproject.cruduser.entity.UserProfile;
 
 @Mapper
 public interface UserMapper {

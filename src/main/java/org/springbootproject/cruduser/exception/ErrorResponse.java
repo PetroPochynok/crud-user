@@ -1,4 +1,4 @@
-package org.springbootproject.curduser.cruduser.exception;
+package org.springbootproject.cruduser.exception;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

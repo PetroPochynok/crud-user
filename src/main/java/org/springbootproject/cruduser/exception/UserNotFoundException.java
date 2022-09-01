@@ -1,4 +1,4 @@
-package org.springbootproject.curduser.cruduser.exception;
+package org.springbootproject.cruduser.exception;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException() {

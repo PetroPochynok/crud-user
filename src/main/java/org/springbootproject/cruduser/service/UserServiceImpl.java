@@ -1,9 +1,9 @@
-package org.springbootproject.curduser.cruduser.service;
+package org.springbootproject.cruduser.service;
 
-import org.springbootproject.curduser.cruduser.dto.UserAndUserProfileDTO;
-import org.springbootproject.curduser.cruduser.entity.User;
-import org.springbootproject.curduser.cruduser.exception.UserNotFoundException;
-import org.springbootproject.curduser.cruduser.repository.UserRepository;
+import org.springbootproject.cruduser.dto.UserAndUserProfileDTO;
+import org.springbootproject.cruduser.entity.User;
+import org.springbootproject.cruduser.exception.UserNotFoundException;
+import org.springbootproject.cruduser.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

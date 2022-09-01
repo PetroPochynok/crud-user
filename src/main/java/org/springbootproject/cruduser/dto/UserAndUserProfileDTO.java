@@ -1,4 +1,4 @@
-package org.springbootproject.curduser.cruduser.dto;
+package org.springbootproject.cruduser.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

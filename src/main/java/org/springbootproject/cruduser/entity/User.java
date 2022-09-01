@@ -1,4 +1,4 @@
-package org.springbootproject.curduser.cruduser.entity;
+package org.springbootproject.cruduser.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;

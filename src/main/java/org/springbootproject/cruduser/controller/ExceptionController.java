@@ -1,7 +1,7 @@
-package org.springbootproject.curduser.cruduser.controller;
+package org.springbootproject.cruduser.controller;
 
-import org.springbootproject.curduser.cruduser.exception.ErrorResponse;
-import org.springbootproject.curduser.cruduser.exception.UserNotFoundException;
+import org.springbootproject.cruduser.exception.ErrorResponse;
+import org.springbootproject.cruduser.exception.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
