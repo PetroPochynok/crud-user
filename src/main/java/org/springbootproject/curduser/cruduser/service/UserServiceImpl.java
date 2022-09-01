@@ -75,7 +75,7 @@ public class UserServiceImpl implements UserService{
     public List<User> getUsersByCountry(String country) {
         return userRepository.findAll()
                 .stream()
-                .filter(user -> user.getUserProfile().getCountry().equals(country))
+                .filter(user -> user.getUserProfile().getCountry().equalsIgnoreCase(country))
                 .collect(toList());
     }
 
@@ -92,7 +92,7 @@ public class UserServiceImpl implements UserService{
     public List<User> getUsersByFirstName(String firstName) {
         return userRepository.findAll()
                 .stream()
-                .filter(user -> user.getFirstName().equals(firstName))
+                .filter(user -> user.getFirstName().equalsIgnoreCase(firstName))
                 .sorted(comparing(User::getFirstName).thenComparing(User::getLastName))
                 .collect(toList());
     }
@@ -101,7 +101,7 @@ public class UserServiceImpl implements UserService{
     public List<User> getUsersByLastName(String lastName) {
         return userRepository.findAll()
                 .stream()
-                .filter(user -> user.getLastName().equals(lastName))
+                .filter(user -> user.getLastName().equalsIgnoreCase(lastName))
                 .sorted(comparing(User::getLastName).thenComparing(User::getFirstName))
                 .collect(toList());
     }
