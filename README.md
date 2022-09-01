@@ -13,7 +13,7 @@ You should have http client to use all CRUD operations, for example: use Postman
 * Lombok
 * MapStruct
 
-## Example of PostMethod using Postman
+## Example of using PostMethod via Postman
 ***Request:***
 <br/>
 <img src="https://i.imgur.com/3fj5cm5.png"/>
