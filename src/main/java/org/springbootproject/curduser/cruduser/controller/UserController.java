@@ -97,4 +97,9 @@ public class UserController {
         return userService.getUsersByLastName(lastName);
     }
 
+    @GetMapping("/getUsersByEmailDomain")
+    public List<User> getUsersByEmailDomain(@RequestParam("domain") String domain) {
+        return userService.getUsersByEmailDomain(domain);
+    }
+
 }

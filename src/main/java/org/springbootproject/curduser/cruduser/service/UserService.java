@@ -29,4 +29,6 @@ public interface UserService {
     List<User> getUsersByFirstName(String firstName);
 
     List<User> getUsersByLastName(String lastName);
+
+    List<User> getUsersByEmailDomain(String domain);
 }

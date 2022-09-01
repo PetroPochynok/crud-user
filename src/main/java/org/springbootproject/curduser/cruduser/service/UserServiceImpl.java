@@ -105,4 +105,12 @@ public class UserServiceImpl implements UserService{
                 .sorted(comparing(User::getLastName).thenComparing(User::getFirstName))
                 .collect(toList());
     }
+
+    @Override
+    public List<User> getUsersByEmailDomain(String domain) {
+        return userRepository.findAll()
+                .stream()
+                .filter(user -> user.getEmail().split("@")[1].equalsIgnoreCase(domain))
+                .collect(toList());
+    }
 }
