@@ -22,6 +22,8 @@ public class UserController {
         this.userService = userService;
     }
 
+    // CRUD operations
+
     @GetMapping
     public List<User> getUsers() {
         return userService.getUsers();
@@ -57,6 +59,38 @@ public class UserController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(user);
+    }
+
+    // business logic
+
+    @GetMapping("/getPoorestUser")
+    public User getPoorestUser() {
+        return userService.getPoorestUser();
+    }
+
+    @GetMapping("/getRichestUser")
+    public User getRichestUser() {
+        return userService.getRichestUser();
+    }
+
+    @GetMapping("/getUsersByCountry")
+    public List<User> getUsersByCountry(@RequestParam("country") String country) {
+        return userService.getUsersByCountry(country);
+    }
+
+    @GetMapping("/getUsersByRangeMoney")
+    public List<User> getUsersByRangeMoney(@RequestParam("min") Integer min, @RequestParam("max") Integer max) {
+        return userService.getUsersByRangeMoney(min, max);
+    }
+
+    @GetMapping("/getUsersByFirstName")
+    public List<User> getUsersByFirstName(@RequestParam("firstName") String firstName) {
+        return userService.getUsersByFirstName(firstName);
+    }
+
+    @GetMapping("/getUsersByLastName")
+    public List<User> getUsersByLastName(@RequestParam("lastName") String lastName) {
+        return userService.getUsersByLastName(lastName);
     }
 
 }

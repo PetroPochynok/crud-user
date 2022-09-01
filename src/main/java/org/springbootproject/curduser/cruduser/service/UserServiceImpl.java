@@ -2,7 +2,6 @@ package org.springbootproject.curduser.cruduser.service;
 
 import org.springbootproject.curduser.cruduser.dto.UserAndUserProfileDTO;
 import org.springbootproject.curduser.cruduser.entity.User;
-import org.springbootproject.curduser.cruduser.entity.UserProfile;
 import org.springbootproject.curduser.cruduser.exception.UserNotFoundException;
 import org.springbootproject.curduser.cruduser.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+
+import static java.util.Comparator.*;
+import static java.util.stream.Collectors.*;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -51,5 +53,56 @@ public class UserServiceImpl implements UserService{
         user.getUserProfile().setCity(dto.getCity());
         user.getUserProfile().setStreet(dto.getStreet());
         return user;
+    }
+
+    @Override
+    public User getPoorestUser() {
+        return userRepository.findAll()
+                .stream()
+                .min(comparing(User::getMoney))
+                .orElseThrow();
+    }
+
+    @Override
+    public User getRichestUser() {
+        return userRepository.findAll()
+                .stream()
+                .max(comparing(User::getMoney))
+                .orElseThrow();
+    }
+
+    @Override
+    public List<User> getUsersByCountry(String country) {
+        return userRepository.findAll()
+                .stream()
+                .filter(user -> user.getUserProfile().getCountry().equals(country))
+                .collect(toList());
+    }
+
+    @Override
+    public List<User> getUsersByRangeMoney(Integer min, Integer max) {
+        return userRepository.findAll()
+                .stream()
+                .filter(user -> user.getMoney() >= min && user.getMoney() <= max)
+                .sorted(comparing(User::getMoney))
+                .collect(toList());
+    }
+
+    @Override
+    public List<User> getUsersByFirstName(String firstName) {
+        return userRepository.findAll()
+                .stream()
+                .filter(user -> user.getFirstName().equals(firstName))
+                .sorted(comparing(User::getFirstName).thenComparing(User::getLastName))
+                .collect(toList());
+    }
+
+    @Override
+    public List<User> getUsersByLastName(String lastName) {
+        return userRepository.findAll()
+                .stream()
+                .filter(user -> user.getLastName().equals(lastName))
+                .sorted(comparing(User::getLastName).thenComparing(User::getFirstName))
+                .collect(toList());
     }
 }

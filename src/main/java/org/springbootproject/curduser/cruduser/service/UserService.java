@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
+
     List<User> getUsers();
 
     Optional<User> getUser(Long id);
@@ -16,4 +17,16 @@ public interface UserService {
     void saveUser(User user);
 
     User updateUser(UserAndUserProfileDTO dto, Long id);
+
+    User getPoorestUser();
+
+    User getRichestUser();
+
+    List<User> getUsersByCountry(String country);
+
+    List<User> getUsersByRangeMoney(Integer min, Integer max);
+
+    List<User> getUsersByFirstName(String firstName);
+
+    List<User> getUsersByLastName(String lastName);
 }
